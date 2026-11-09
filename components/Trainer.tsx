@@ -151,7 +151,7 @@ export default function Trainer({ table }: { table: number }) {
       if (/^\d$/.test(e.key)) pressDigit(e.key);
       else if (e.key === "Backspace") backspace();
       else if (e.key === "Enter") {
-        e.preventDefault(); // щоб Enter не "натискав" кнопку у фокусі
+        e.preventDefault(); 
         submit();
       }
     };
