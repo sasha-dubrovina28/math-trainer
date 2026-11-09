@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Тренажер таблиці множення
 
-## Getting Started
+Інтерактивний тренажер для вивчення таблиці множення від 2 до 9. Обираєш цифру, розв'язуєш 10 прикладів на час і отримуєш результат у балах.
 
-First, run the development server:
+**Демо:** [math-trainer-phi.vercel.app](https://math-trainer-phi.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Можливості
+
+- Вибір таблиці множення від 2 до 9 на окремій сторінці
+- 10 випадкових прикладів у кожному раунді
+- Таймер на кожен приклад з кольоровим індикатором
+- Бали залежать від швидкості відповіді
+- Цифрова клавіатура на екрані та підтримка клавіатури комп'ютера (цифри, Backspace, Enter)
+- Підсумок із оцінкою, смайликом і списком усіх відповідей
+- Вкладка «Інструкція» з правилами
+- Адаптивна верстка за підходом mobile first (точки перелому: 768px і 1400px)
+
+## Система балів
+
+За правильну відповідь:
+
+| Час на відповідь | Бали | Колір індикатора |
+| ---------------- | ---- | ---------------- |
+| менше 10 секунд  | 10   | зелений          |
+| 10 – 15 секунд   | 9    | жовтий           |
+| 15 – 20 секунд   | 8    | помаранчевий     |
+| більше 20 секунд | 7    | червоний         |
+
+За неправильну відповідь нараховується 0 балів. Максимальний результат: 100 балів.
+
+## Технології
+
+- [Next.js](https://nextjs.org/) (App Router)
+- React
+- TypeScript
+- CSS (без бібліотек), шрифт Manrope через `next/font`
+- Деплой на Vercel
+
+## Структура проєкту
+
+```
+├── app/
+│   ├── layout.tsx                  # кореневий layout, шрифт, метадані
+│   ├── globals.css                 # усі стилі (mobile first)
+│   ├── page.tsx                    # вибір таблиці множення
+│   └── multiplication/
+│       └── [table]/
+│           └── page.tsx            # сторінка тренажера для обраної цифри
+├── components/
+│   └── Trainer.tsx                 # логіка та інтерфейс тренажера
+├── lib/
+│   └── constants.ts                # перелік таблиць, кількість прикладів
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Запуск локально
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Клонувати репозиторій:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone <посилання-на-репозиторій>
+   cd <назва-папки>
+   ```
 
-## Learn More
+2. Встановити залежності:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Запустити в режимі розробки:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Відкрити [http://localhost:3000](http://localhost:3000)
