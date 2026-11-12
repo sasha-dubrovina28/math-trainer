@@ -512,7 +512,13 @@ body {
     padding: 22px 24px;
     border-radius: 18px;
   }
-
+    .card>.actions {
+      width: 420px;
+        max-width: 55%;
+        margin-left: auto;
+        justify-content: center;
+        align-items: center;
+    }
   .card-head {
     flex-direction: row;
     justify-content: space-between;
@@ -652,7 +658,9 @@ body {
     padding: 28px 32px;
     border-radius: 20px;
   }
-
+    .card>.actions {
+      width: 480px;
+    }
   .card-title {
     font-size: 18px;
   }

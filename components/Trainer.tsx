@@ -167,7 +167,6 @@ export default function Trainer({ table }: { table: number }) {
 
   return (
     <div className="trainer">
-      {/* Шапка */}
       <header className="page-header">
         <div>
           <h1>Таблиця множення на {table}</h1>
@@ -347,7 +346,19 @@ export default function Trainer({ table }: { table: number }) {
                 ⌫
               </button>
             </div>
-          </div>
+            </div>
+             {phase === "running" && (
+            <div className="actions">
+              <button
+                type="button"
+                className="btn-primary"
+                onClick={submit}
+                disabled={input === ""}
+              >
+                {isLast ? "Завершити" : "Наступний приклад"}
+              </button>
+            </div>
+          )}
           {phase === "done" && (
             <div className="summary">
               <p className="score-line">
@@ -377,16 +388,6 @@ export default function Trainer({ table }: { table: number }) {
         {tab === "exercises" && phase === "idle" && (
           <button type="button" className="btn-primary" onClick={start}>
             Розпочати
-          </button>
-        )}
-        {tab === "exercises" && phase === "running" && (
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={submit}
-            disabled={input === ""}
-          >
-            {isLast ? "Завершити" : "Наступний приклад"}
           </button>
         )}
         {tab === "exercises" && phase === "done" && (
